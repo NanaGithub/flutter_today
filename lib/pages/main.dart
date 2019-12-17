@@ -6,6 +6,7 @@ import 'route/route_main.dart';
 import 'ui/hello_widget.dart';
 import 'ui/common_widgets.dart';
 import 'route/hero.dart';
+import 'ui/stateful_widget.dart';
 
 ///主页面
 class HomePage extends StatelessWidget {
@@ -38,6 +39,7 @@ class _ListWidgetState extends State<ListWidget> {
     "路由和导航",
     "一个布局的构建",
     "Flutter中的布局",
+    "交互和状态管理",
     "添加&移除组件",
     "转场动画"
   ];
@@ -47,6 +49,7 @@ class _ListWidgetState extends State<ListWidget> {
     RoutePage(),
     HelloWidget(),
     CommonWidgets(),
+    IndexStatefulWidget(),
     WidgetPage(),
     MainScreen(),
   ];

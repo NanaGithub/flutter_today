@@ -49,12 +49,13 @@ class HelloWidget extends StatelessWidget {
                   style: TextStyle(color: Colors.grey[500]))
             ],
           )),
+          FavoriteWidget(),
 
           ///图标
-          Icon(Icons.star, color: Colors.red),
-
-          ///文字
-          Text("17")
+//          Icon(Icons.star, color: Colors.red),
+//
+//          ///文字
+//          Text("17")
         ],
       ),
     );
@@ -108,4 +109,57 @@ class HelloWidget extends StatelessWidget {
           softWrap: true,
         ),
       );
+}
+
+///星星按钮
+class FavoriteWidget extends StatefulWidget {
+  @override
+  _FavoriteWidgetState createState() => _FavoriteWidgetState();
+}
+
+///存储可变信息
+class _FavoriteWidgetState extends State<FavoriteWidget> {
+  bool _isFavorite = true;
+  int _favoriteCount = 100;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        ///按钮设置边距，所以用容器包裹
+        Container(
+          padding: EdgeInsets.all(0),
+
+          ///因为按钮可点击，所以用IconButton
+          child: IconButton(
+
+              ///根据状态显示不同的图标
+              icon: _isFavorite ? Icon(Icons.star) : Icon(Icons.star_border),
+              color: Colors.red[500],
+              onPressed: () {
+                _toggleFavorite();
+              }),
+        ),
+
+        ///文字包裹在SizedBox中防止因为文字长度变化发生跳跃
+//        Text('$_favoriteCount')
+        SizedBox(
+          width: 25,
+          child: Text('$_favoriteCount'),
+        )
+      ],
+    );
+  }
+
+  void _toggleFavorite() {
+    setState(() {
+      if (_isFavorite) {
+        _favoriteCount -= 1;
+        _isFavorite = false;
+      } else {
+        _favoriteCount += 1;
+        _isFavorite = true;
+      }
+    });
+  }
 }
